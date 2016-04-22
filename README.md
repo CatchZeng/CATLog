@@ -12,7 +12,7 @@ This library requires a deployment target of iOS 6.0 or greater.
 
 ### CATLog is Simple:
 
-It takes as little as a single line of code to configure CATLog when your application launches.Then replace your NSLog statements with CATLog[X] statements and that's about it.
+It takes as little as a single line of code to configure CATLog when your application launches.Then replace your NSLog statements with CLog[X] statements and that's about it.
 
 ### CATLog is Powerful:
 - Log level
@@ -86,7 +86,7 @@ iOS6或以上
 ## 特性
 
 ### CATLog 使用简单:
-只需加入几行代码就可配置完毕。然后将NSLog换成CATLog[X] 就可以了。
+只需加入几行代码就可配置完毕。然后将NSLog换成CLog[X] 就可以了。
 
 ### CATLog 功能强大:
 - 支持设置日志级别
