@@ -25,16 +25,23 @@
     [CATLog initLog];
     
     //Log normal string
-    CLogE(@"test normal string");
+    CLogE(@"Normal string");
     
     NSString* normalStt = [NSString stringWithFormat:@"Normal String"];
     CLogE(normalStt);
     
     //Log format string
-    CLogD(@"string1,%@,%@",@"string2",@"string3");
+    CLogD(@"Format String:string1,%@,%@",@"string2",@"string3");
     
     UIImageView* imgView = [[UIImageView alloc]init];
-    CLogD(@"format string %@",imgView);
+    CLogD(@"Format String %@",imgView);
+    
+    //Log Color
+    CLogE(@"I am error log. Do you like my color?");
+    CLogW(@"I am warning log. Do you like my color?");
+    CLogI(@"I am info log. Do you like my color?");
+    CLogD(@"I am debug log. Do you like my color?");
+    CLogV(@"I am verbose log. Do you like my color?");
     
     return YES;
 }

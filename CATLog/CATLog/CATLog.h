@@ -72,6 +72,13 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
 + (void)setLogLevel:(CATLogLevel)level;
 
 /**
+ *  set number of days to delete log file
+ *
+ *  @param number   : number of days
+ */
++(void)setNumberOfDaysToDelete:(NSInteger)number;
+
+/**
  *  log
  *
  *  @param level    : log level

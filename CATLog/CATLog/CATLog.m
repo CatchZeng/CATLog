@@ -30,18 +30,18 @@ static CATLogLevel LogLevel = CATLevelE; //Release => DLevelE
 #define XCODE_COLORS_RESET     XCODE_COLORS_ESCAPE @";"   // Clear any foreground or background color
 
 static NSString *color4LogE    = @"255,0,0";
-static NSString *color4LogW    = @"238,180,34";
-static NSString *color4LogI    = @"0,0,255";
-static NSString *color4LogD    = @"209,57,168";
-static NSString *color4LogV    = @"0,255,0";
+static NSString *color4LogW    = @"204,113,62";
+static NSString *color4LogI    = @"73,176,249";
+static NSString *color4LogD    = @"205,74,162";
+static NSString *color4LogV    = @"115,205,102";
 
 //log file
 static NSString *logFilePath = nil;
 static NSString *logDic      = nil;
 static NSString *crashDic    = nil;
 
-//define how many days to delete log file
-const int preDaysToDelLog = 2;
+//number of days to delete log file
+static NSInteger numberOfDaysToDelete = 2;
 
 //log queue
 static dispatch_once_t logQueueCreatOnce;
@@ -120,6 +120,10 @@ static dispatch_queue_t logOperationQueue;
     }
 }
 
++(void)setNumberOfDaysToDelete:(NSInteger)number{
+    numberOfDaysToDelete = number;
+}
+
 + (void)setLogLevel:(CATLogLevel)level{
     LogLevel = level;
 }
@@ -170,9 +174,6 @@ static dispatch_queue_t logOperationQueue;
 #pragma mark --
 #pragma mark -- private methods
 
-/**
- *  log file related
- */
 +(void)_initFile{
     if (!logFilePath){
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -210,8 +211,8 @@ static dispatch_queue_t logOperationQueue;
         }
         
         //delete previous log file
-        NSDate *prevDate = [[NSDate date] dateByAddingTimeInterval:-60*60*24*preDaysToDelLog];
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:prevDate];
+        NSDate *prevDate = [[NSDate date] dateByAddingTimeInterval:-60*60*24*numberOfDaysToDelete];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:prevDate];
         [components setHour:0];
         [components setMinute:0];
         [components setSecond:0];
