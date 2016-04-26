@@ -64,7 +64,7 @@ Alternatively you can directly add the `CATLog.h`& `CATLog.m`  source files to y
 
 void uncaughtExceptionHandler(NSException *exception){
    [CATLog logCrash:exception];
-   }
+}
 ```
 	
 ##### Set log level
@@ -88,8 +88,8 @@ void uncaughtExceptionHandler(NSException *exception){
 ##### If you do not like use CLog,you can custom log macro you need.
 
 ```objective-c
-	#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
-	YouLogI(@"ReDefine Log by yourself");
+#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
+YouLogI(@"ReDefine Log by yourself");
 ```    
 
 
@@ -155,7 +155,7 @@ iOS6或以上
 
 void uncaughtExceptionHandler(NSException *exception){
    [CATLog logCrash:exception];
-   }
+}
 ```
 	
 ##### 设置日志级别
@@ -179,6 +179,6 @@ void uncaughtExceptionHandler(NSException *exception){
 ##### 如果不喜欢用CLog作为日志宏，可以自定义
 
 ```objective-c
-	#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
-	YouLogI(@"ReDefine Log by yourself");
+#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];               
+YouLogI(@"ReDefine Log by yourself");
 ```    
