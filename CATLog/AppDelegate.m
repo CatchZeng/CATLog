@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "CATLog.h"
 
+#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
+
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +26,17 @@
     
     //Init log
     [CATLog initLog];
+    
+    //Set log level
+    [CATLog setLogLevel:CATLevelV];
+    
+    //Set number of days to delete
+    [CATLog setNumberOfDaysToDelete:3];
+    
+    [CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
+    
+    //Redefine log
+    YouLogI(@"ReDefine Log by yourself");
     
     //Log normal string
     CLogE(@"Normal string");
