@@ -54,46 +54,43 @@ Alternatively you can directly add the `CATLog.h`& `CATLog.m`  source files to y
 
 ##### Init log && Set exceptionHandler
 
-	```objective-c
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	    //Set ExceptionHandler
-	    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-	    
-	    //Init log
-	    [CATLog initLog];
-	}
-	
-	void uncaughtExceptionHandler(NSException *exception){
-    [CATLog logCrash:exception];
-    }
-	```
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //Set ExceptionHandler
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    //Init log
+	[CATLog initLog];
+}
+
+void uncaughtExceptionHandler(NSException *exception){
+   [CATLog logCrash:exception];
+   }
+```
 	
 ##### Set log level
 
-	```objective-c
-    [CATLog setLogLevel:CATLevelE];
-    ```
+```objective-c
+[CATLog setLogLevel:CATLevelE];
+```
 
 ##### Set number of days to delete log file
 
-	```objective-c
-	[CATLog setNumberOfDaysToDelete:3];
-    ```
+```objective-c
+[CATLog setNumberOfDaysToDelete:3];
+```
+
 ##### If you do not like default log color,you can set color for each level.
 
-	```objective-c
-	[CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
-    ```
+```objective-c
+[CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
+```
     
 ##### If you do not like use CLog,you can custom log macro you need.
 
-	```objective-c
+```objective-c
 	#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
-	
-	
 	YouLogI(@"ReDefine Log by yourself");
-	
-    ```    
+```    
 
 
 
@@ -148,43 +145,40 @@ iOS6或以上
 
 ##### 初始化 && 设置异常捕获
 
-	```objective-c
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	    //Set ExceptionHandler
-	    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-	    
-	    //Init log
-	    [CATLog initLog];
-	}
-	
-	void uncaughtExceptionHandler(NSException *exception){
-    [CATLog logCrash:exception];
-    }
-	```
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //Set ExceptionHandler
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    //Init log
+	[CATLog initLog];
+}
+
+void uncaughtExceptionHandler(NSException *exception){
+   [CATLog logCrash:exception];
+   }
+```
 	
 ##### 设置日志级别
 
-	```objective-c
-    [CATLog setLogLevel:CATLevelE];
-    ```
-
+```objective-c
+[CATLog setLogLevel:CATLevelE];
+```
 ##### 设置删除几天前的日志文件
 
-	```objective-c
-	[CATLog setNumberOfDaysToDelete:3];
-    ```
+```objective-c
+[CATLog setNumberOfDaysToDelete:3];
+```
+
 ##### 如果不喜欢默认的日志输出颜色，可以为每个级别设置自定义的颜色
 
-	```objective-c
-	[CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
-    ```
+```objective-c
+[CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
+```
+
     
 ##### 如果不喜欢用CLog作为日志宏，可以自定义
 
-	```objective-c
+```objective-c
 	#define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];
-	
-	
 	YouLogI(@"ReDefine Log by yourself");
-	
-    ```    
+```    
