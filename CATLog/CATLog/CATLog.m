@@ -129,42 +129,42 @@ static dispatch_queue_t logOperationQueue;
 + (void)logLevel:(CATLogLevel)level logInfo:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:level format:format VaList:args];
+    [self _logvLevel:level format:format vaList:args];
     va_end(args);
 }
 
 + (void)logV:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelV format:format VaList:args];
+    [self _logvLevel:CATLevelV format:format vaList:args];
     va_end(args);
 }
 
 + (void)logD:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelD format:format VaList:args];
+    [self _logvLevel:CATLevelD format:format vaList:args];
     va_end(args);
 }
 
 + (void)logI:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelI format:format VaList:args];
+    [self _logvLevel:CATLevelI format:format vaList:args];
     va_end(args);
 }
 
 + (void)logW:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelW format:format VaList:args];
+    [self _logvLevel:CATLevelW format:format vaList:args];
     va_end(args);
 }
 
 + (void)logE:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelE format:format VaList:args];
+    [self _logvLevel:CATLevelE format:format vaList:args];
     va_end(args);
 }
 
@@ -239,7 +239,7 @@ static dispatch_queue_t logOperationQueue;
     }
 }
 
-+(void)_logvLevel:(CATLogLevel)level format:(NSString *)format VaList:(va_list)args{
++(void)_logvLevel:(CATLogLevel)level format:(NSString *)format vaList:(va_list)args{
     __block NSString *formatTmp = format;
     formatTmp = [[self _logFormatPrefix:level] stringByAppendingString:formatTmp];
     NSString *contentStr = [[NSString alloc] initWithFormat:formatTmp arguments:args];
