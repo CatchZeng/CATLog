@@ -29,11 +29,8 @@ static CATLogLevel LogLevel = CATLevelE; //Release => DLevelE
 #define XCODE_COLORS_RESET_BG  XCODE_COLORS_ESCAPE @"bg;" // Clear any background color
 #define XCODE_COLORS_RESET     XCODE_COLORS_ESCAPE @";"   // Clear any foreground or background color
 
-static NSString *color4LogE    = @"255,0,0";
-static NSString *color4LogW    = @"204,113,62";
-static NSString *color4LogI    = @"73,176,249";
-static NSString *color4LogD    = @"205,74,162";
-static NSString *color4LogV    = @"115,205,102";
+static NSMutableDictionary* colorDic = nil;
+static NSMutableDictionary* bgColorDic = nil;
 
 //log file
 static NSString *logFilePath = nil;
@@ -56,9 +53,8 @@ static dispatch_queue_t logOperationQueue;
 
 +(void)initLog{
     [self setColorEnable:YES];
-    
+    [self _initColors];
     [self _initFile];
-    
     dispatch_once(&logQueueCreatOnce, ^{
         logOperationQueue =  dispatch_queue_create("com.catlog.app.operationqueue", DISPATCH_QUEUE_SERIAL);
     });
@@ -74,17 +70,19 @@ static dispatch_queue_t logOperationQueue;
 
 +(void)setR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level{
     NSString* rgbStr = [NSString stringWithFormat:@"%ld,%ld,%ld",(long)R,(long)G,(long)B];
-    if (level == CATLevelE) {
-        color4LogE = rgbStr;
-    }else if(level == CATLevelW) {
-        color4LogW = rgbStr;
-    }else if(level == CATLevelI) {
-        color4LogI = rgbStr;
-    }else if(level == CATLevelD) {
-        color4LogD = rgbStr;
-    }else if(level == CATLevelV) {
-        color4LogV = rgbStr;
+    if (colorDic) {
+        [colorDic setObject:rgbStr forKey:@(level)];
+    }else{
+        NSLog(XCODE_COLORS_ESCAPE @"fg%@;" @"%@" XCODE_COLORS_RESET,rgbStr,@"You should call [CATLog initLog] before use it!");
     }
+}
+
++(void)setBgR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level{
+    NSString* rgbStr = [NSString stringWithFormat:@"%ld,%ld,%ld",(long)R,(long)G,(long)B];
+    if (!bgColorDic) {
+        bgColorDic = [NSMutableDictionary dictionaryWithCapacity:5];
+    }
+    [bgColorDic setObject:rgbStr forKey:@(level)];
 }
 
 + (void)logCrash:(NSException *)exception{
@@ -128,51 +126,60 @@ static dispatch_queue_t logOperationQueue;
     LogLevel = level;
 }
 
-+ (void)logLevel:(CATLogLevel)level LogInfo:(NSString *)format, ...{
++ (void)logLevel:(CATLogLevel)level logInfo:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:level Format:format VaList:args];
+    [self _logvLevel:level format:format VaList:args];
     va_end(args);
 }
 
 + (void)logV:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelV Format:format VaList:args];
+    [self _logvLevel:CATLevelV format:format VaList:args];
     va_end(args);
 }
 
 + (void)logD:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelD Format:format VaList:args];
+    [self _logvLevel:CATLevelD format:format VaList:args];
     va_end(args);
 }
 
 + (void)logI:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelI Format:format VaList:args];
+    [self _logvLevel:CATLevelI format:format VaList:args];
     va_end(args);
 }
 
 + (void)logW:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelW Format:format VaList:args];
+    [self _logvLevel:CATLevelW format:format VaList:args];
     va_end(args);
 }
 
 + (void)logE:(NSString *)format, ...{
     va_list args;
     va_start(args, format);
-    [self _logvLevel:CATLevelE Format:format VaList:args];
+    [self _logvLevel:CATLevelE format:format VaList:args];
     va_end(args);
 }
 
 
 #pragma mark --
 #pragma mark -- private methods
+
++(void)_initColors{
+    NSString *color4LogE    = @"255,0,0";
+    NSString *color4LogW    = @"204,113,62";
+    NSString *color4LogI    = @"73,176,249";
+    NSString *color4LogD    = @"205,74,162";
+    NSString *color4LogV    = @"115,205,102";
+    colorDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:color4LogV,@(0),color4LogD,@(1),color4LogI,@(2),color4LogW,@(3),color4LogE,@(4),nil];
+}
 
 +(void)_initFile{
     if (!logFilePath){
@@ -232,14 +239,15 @@ static dispatch_queue_t logOperationQueue;
     }
 }
 
-+(void)_logvLevel:(CATLogLevel)level Format:(NSString *)format VaList:(va_list)args{
++(void)_logvLevel:(CATLogLevel)level format:(NSString *)format VaList:(va_list)args{
     __block NSString *formatTmp = format;
     formatTmp = [[self _logFormatPrefix:level] stringByAppendingString:formatTmp];
     NSString *contentStr = [[NSString alloc] initWithFormat:formatTmp arguments:args];
     NSString *contentN = [contentStr stringByAppendingString:@"\n"];
     NSString *content = [NSString stringWithFormat:@"%@ %@",[self _getCurrentTime], contentN];
     
-    NSString* color = [self _logColorStrForLevel:level];
+    NSString* color = [colorDic objectForKey:@(level)];
+    NSString* bgColor = [bgColorDic objectForKey:@(level)];
     
     if (logOperationQueue) {
         dispatch_async(logOperationQueue, ^{
@@ -249,7 +257,11 @@ static dispatch_queue_t logOperationQueue;
                 [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
                 [file closeFile];
 #ifdef DEBUG
-                NSLog(XCODE_COLORS_ESCAPE @"fg%@;" @"%@" XCODE_COLORS_RESET,color,contentN);
+                if (bgColor) {
+                    NSLog(XCODE_COLORS_ESCAPE @"fg%@;" XCODE_COLORS_ESCAPE @"bg%@;" @"%@" XCODE_COLORS_RESET,color,bgColor,content);
+                }else{
+                    NSLog(XCODE_COLORS_ESCAPE @"fg%@;" @"%@" XCODE_COLORS_RESET,color,contentN);
+                }
 #endif
                 formatTmp = nil;
             }
@@ -288,21 +300,6 @@ static dispatch_queue_t logOperationQueue;
 
 + (NSString*)_logFormatPrefix:(CATLogLevel)logLevel{
     return [NSString stringWithFormat:@"[%@] ", [self _stringFromLogLevel:logLevel]];
-}
-
-+(NSString *)_logColorStrForLevel:(CATLogLevel)level{
-    if (level == CATLevelE) {
-        return color4LogE;
-    }else if(level == CATLevelW) {
-        return color4LogW;
-    }else if(level == CATLevelI) {
-        return color4LogI;
-    }else if(level == CATLevelD) {
-        return color4LogD;
-    }else if(level == CATLevelV) {
-        return color4LogV;
-    }
-    return color4LogV;
 }
 
 @end

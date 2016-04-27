@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
  */
 +(void)setR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level;
 
++(void)setBgR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level;
+
 /**
  *  log exception
  *
@@ -84,7 +86,7 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
  *  @param level    : log level
  *  @param format   : format log message
  */
-+ (void)logLevel:(CATLogLevel)level LogInfo:(NSString *)format, ...NS_FORMAT_FUNCTION(2,3);
++ (void)logLevel:(CATLogLevel)level logInfo:(NSString *)format, ...NS_FORMAT_FUNCTION(2,3);
 
 /**
  *  log error

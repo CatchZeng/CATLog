@@ -33,7 +33,9 @@
     //Set number of days to delete
     [CATLog setNumberOfDaysToDelete:3];
     
-    [CATLog setR:200 G:200 B:200 forLevel:CATLevelE];
+    //Set Color
+    [CATLog setR:200 G:0 B:0 forLevel:CATLevelE];
+    [CATLog setBgR:255 G:255 B:255 forLevel:CATLevelE];
     
     //Redefine log
     YouLogI(@"ReDefine Log by yourself");
