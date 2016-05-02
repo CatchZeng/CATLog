@@ -3,7 +3,7 @@
 [![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
 
 
-An open source log system for Objective-C based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
+An log system,contains many excellent features,based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
 
 ## New Feature
 - Add mac client to help you debug without the data line.(mac client called CATLogServer.zip is included in the project file)
@@ -30,7 +30,7 @@ It takes as little as a single line of code to configure CATLog when your applic
 - Log crash
 - Auto delete old log file
 - Custom log macro easily
-- Colorizing debugger console outp 
+- Colorizing debugger console output
 - Clickable links in your Xcode console, so you never wonder which class logged the message.
 - Remote log to mac client (debug without the data line)
 
@@ -102,7 +102,7 @@ YouLogI(@"ReDefine Log by yourself");
 # CATLog
 [![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
 
-一个基于[Xcodecolors](https://github.com/robbiehanson/XcodeColors)和[KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole)的oc开源日志工具
+一个基于[Xcodecolors](https://github.com/robbiehanson/XcodeColors)和[KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole),拥有许多优良特性的开源日志工具。
 
 ## 新特性
 - 增加mac客户端,让你可以无需连接数据线调试。（mac客户端在本工程的CATLogServer.zip文件中）
