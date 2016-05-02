@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author		 = { "CatchZeng" => "891793848@qq.com" }
   s.platform     = :ios, '6.0'
   s.source       = { :git => "https://github.com/CatchZeng/CATLog.git", :tag => "1.0.2" }
-  s.source_files  = "CATLog/CATLog/CATLog.{h,m}"
+  s.source_files  = "CATLog/CATLog/*.{h,m}"
   s.requires_arc = true
 end

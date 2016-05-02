@@ -281,9 +281,6 @@ static long tag;
     NSString *contentN = [contentStr stringByAppendingString:@"\n"];
     NSString *content = [NSString stringWithFormat:@"%@ %@",[self _getCurrentTime], contentN];
     
-    NSString* color = [colorDic objectForKey:@(level)];
-    NSString* bgColor = [bgColorDic objectForKey:@(level)];
-    
     if (logOperationQueue) {
         dispatch_async(logOperationQueue, ^{
             if (level >= LogLevel){
@@ -292,6 +289,8 @@ static long tag;
                 [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
                 [file closeFile];
 #ifdef DEBUG
+                NSString* color = [colorDic objectForKey:@(level)];
+                NSString* bgColor = [bgColorDic objectForKey:@(level)];
                 if (bgColor) {
                     NSLog(XCODE_COLORS_ESCAPE @"fg%@;" XCODE_COLORS_ESCAPE @"bg%@;" @"%@" XCODE_COLORS_RESET,color,bgColor,content);
                 }else{
@@ -309,6 +308,7 @@ static long tag;
             }
         });
     }else{
+        NSString* color = [colorDic objectForKey:@(level)];
         NSLog(XCODE_COLORS_ESCAPE @"fg%@;" @"%@" XCODE_COLORS_RESET,color,@"You should call [CATLog initLog] before use it!");
     }
 }
