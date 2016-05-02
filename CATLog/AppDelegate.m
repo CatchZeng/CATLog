@@ -27,6 +27,10 @@
     //Init log
     [CATLog initLog];
     
+    //Remote Log
+    [CATLog setRemoteLogEnable:YES];
+    [CATLog setRemoteIp:@"192.168.1.100" port:1111];
+    
     //Set log level
     [CATLog setLogLevel:CATLevelV];
     

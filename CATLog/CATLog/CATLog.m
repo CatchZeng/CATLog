@@ -8,6 +8,7 @@
 
 #import "CATLog.h"
 #import <UIKit/UIKit.h>
+#import "CATLogTransfer.h"
 
 #ifdef DEBUG
 static CATLogLevel LogLevel = CATLevelV; //Debug => DLevelV
@@ -44,6 +45,12 @@ static NSInteger numberOfDaysToDelete = 2;
 static dispatch_once_t logQueueCreatOnce;
 static dispatch_queue_t logOperationQueue;
 
+//remote log
+static CATLogTransfer *udpSocket;
+static BOOL remoteLogEnable;
+static NSString* remoteIp;
+static NSInteger remotePort;
+static long tag;
 
 @implementation CATLog
 
@@ -52,12 +59,40 @@ static dispatch_queue_t logOperationQueue;
 #pragma mark -- public methods
 
 +(void)initLog{
+    [self setRemoteLogEnable:NO];
     [self setColorEnable:YES];
     [self _initColors];
     [self _initFile];
     dispatch_once(&logQueueCreatOnce, ^{
         logOperationQueue =  dispatch_queue_create("com.catlog.app.operationqueue", DISPATCH_QUEUE_SERIAL);
     });
+}
+
++(void)setRemoteLogEnable:(BOOL)enable{
+    remoteLogEnable = enable;
+    if (enable) {
+        [self _setupSocket];
+    }
+}
+
++(void)_setupSocket{
+    if (!udpSocket) {
+        udpSocket = [[CATLogTransfer alloc] initWithDelegate:nil delegateQueue:dispatch_get_main_queue()];
+    }
+    NSError *error = nil;
+    if (![udpSocket bindToPort:0 error:&error]){
+        NSLog(@"Error binding: %@", error);
+        return;
+    }
+    if (![udpSocket beginReceiving:&error]){
+        NSLog(@"Error receiving: %@", error);
+        return;
+    }
+}
+
++(void)setRemoteIp:(NSString *)ip port:(NSInteger)port{
+    remoteIp = ip;
+    remotePort = port;
 }
 
 +(void)setColorEnable:(BOOL)enable{
@@ -261,6 +296,13 @@ static dispatch_queue_t logOperationQueue;
                     NSLog(XCODE_COLORS_ESCAPE @"fg%@;" XCODE_COLORS_ESCAPE @"bg%@;" @"%@" XCODE_COLORS_RESET,color,bgColor,content);
                 }else{
                     NSLog(XCODE_COLORS_ESCAPE @"fg%@;" @"%@" XCODE_COLORS_RESET,color,contentN);
+                }
+                
+                if (remoteLogEnable) {
+                    NSString* dataStr = [NSString stringWithFormat:@"%@;%@;%@",color,bgColor,content];
+                    NSData *data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+                    [udpSocket sendData:data toHost:remoteIp port:remotePort withTimeout:-1 tag:tag];
+                    tag++;
                 }
 #endif
                 formatTmp = nil;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F8EEFBC1CD2115B0029E3EC /* CATLogTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */; };
 		5D2A6C481CC7DEB300608D28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A6C471CC7DEB300608D28 /* main.m */; };
 		5D2A6C4B1CC7DEB300608D28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A6C4A1CC7DEB300608D28 /* AppDelegate.m */; };
 		5D2A6C4E1CC7DEB300608D28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A6C4D1CC7DEB300608D28 /* ViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F8EEFBA1CD2115A0029E3EC /* CATLogTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATLogTransfer.h; sourceTree = "<group>"; };
+		3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATLogTransfer.m; sourceTree = "<group>"; };
 		5D2A6C431CC7DEB300608D28 /* CATLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CATLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2A6C471CC7DEB300608D28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D2A6C491CC7DEB300608D28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 			children = (
 				5D2A6C5E1CC7DED900608D28 /* CATLog.h */,
 				5D2A6C5F1CC7DED900608D28 /* CATLog.m */,
+				3F8EEFBA1CD2115A0029E3EC /* CATLogTransfer.h */,
+				3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */,
 			);
 			path = CATLog;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2A6C4E1CC7DEB300608D28 /* ViewController.m in Sources */,
+				3F8EEFBC1CD2115B0029E3EC /* CATLogTransfer.m in Sources */,
 				5D2A6C601CC7DED900608D28 /* CATLog.m in Sources */,
 				5D2A6C4B1CC7DEB300608D28 /* AppDelegate.m in Sources */,
 				5D2A6C481CC7DEB300608D28 /* main.m in Sources */,

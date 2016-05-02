@@ -1,10 +1,13 @@
 # CATLog
-[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
+[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.pdf)](http://cocoadocs.org/docsets/CATLog/)
 
 
 An open source log system for Objective-C based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
 
 中文请下翻
+
+## Effect 
+![effect](https://github.com/CatchZeng/CATLog/blob/master/CATLog.gif)
 
 ## Requirements
 This library requires a deployment target of iOS 6.0 or greater.
@@ -23,12 +26,7 @@ It takes as little as a single line of code to configure CATLog when your applic
 - Custom log macro easily
 - Colorizing debugger console outp 
 - Clickable links in your Xcode console, so you never wonder which class logged the message.
-
-## Effect 
-![effect](https://github.com/CatchZeng/CATLog/blob/master/color.jpg)
-
-Clickable links in your Xcode console,like this.
-![effect](https://github.com/CatchZeng/CATLog/blob/master/jump.gif)
+- Remote log to mac client (debug without the data line)
 
 ## Adding CATLog to your project
 
@@ -96,9 +94,12 @@ YouLogI(@"ReDefine Log by yourself");
 
 
 # CATLog
-[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
+[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.pdf)](http://cocoadocs.org/docsets/CATLog/)
 
 一个基于[Xcodecolors](https://github.com/robbiehanson/XcodeColors)和[KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole)的oc开源日志工具
+
+## 效果 
+![effect](https://github.com/CatchZeng/CATLog/blob/master/CATLog.gif)
 
 ## Requirements
 iOS6或以上
@@ -116,12 +117,7 @@ iOS6或以上
 - 方便地自定义日志宏
 - 支持颜色打印日志
 - 支持点击日志信息跳转到代码中，方便定位错误信息。
-
-## 效果 
-![effect](https://github.com/CatchZeng/CATLog/blob/master/color.jpg)
-
-点击日志信息跳转到代码中的效果如下。
-![effect](https://github.com/CatchZeng/CATLog/blob/master/jump.gif)
+- 远程输出到mac客户端（无需连接数据线调试）
 
 ## 将CATLog加入工程
 

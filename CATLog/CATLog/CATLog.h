@@ -41,6 +41,21 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
 +(void)initLog;
 
 /**
+ *  set remote log enable
+ *
+ *  @param enable : BOOL
+ */
++(void)setRemoteLogEnable:(BOOL)enable;
+
+/**
+ *  set catlog server ip &port
+ *
+ *  @param ip   : server ip
+ *  @param port : server port
+ */
++(void)setRemoteIp:(NSString *)ip port:(NSInteger)port;
+
+/**
  *  set colorful log enable
  *
  *  @param enable   : BOOL
@@ -57,6 +72,14 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
  */
 +(void)setR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level;
 
+/**
+ *  set bg color for level
+ *
+ *  @param R        : Red
+ *  @param G        : Green
+ *  @param B        : Blue
+ *  @param level    : Log level
+ */
 +(void)setBgR:(NSInteger)R G:(NSInteger)G B:(NSInteger)B forLevel:(CATLogLevel)level;
 
 /**
