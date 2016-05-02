@@ -3,7 +3,7 @@
 [![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
 
 
-An log system,contains many excellent features,based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
+A log system,contains many excellent features,based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
 
 ## New Feature
 - Add mac client to help you debug without the data line.(mac client called CATLogServer.zip is included in the project file)
