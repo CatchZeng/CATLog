@@ -1,5 +1,5 @@
 # CATLog
-[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.pdf)](http://cocoadocs.org/docsets/CATLog/)
+[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.svg)](http://cocoadocs.org/docsets/CATLog/)
 
 
 An open source log system for Objective-C based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
@@ -94,7 +94,7 @@ YouLogI(@"ReDefine Log by yourself");
 
 
 # CATLog
-[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.pdf)](http://cocoadocs.org/docsets/CATLog/)
+[![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.svg)](http://cocoadocs.org/docsets/CATLog/)
 
 一个基于[Xcodecolors](https://github.com/robbiehanson/XcodeColors)和[KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole)的oc开源日志工具
 
