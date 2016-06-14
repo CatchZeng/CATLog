@@ -9,6 +9,8 @@
 #import "CATLog.h"
 #import <UIKit/UIKit.h>
 #import "CATLogTransfer.h"
+#import "CATLogReviewController.h"
+#import "CATLogFilesViewController.h"
 
 #ifdef DEBUG
 static CATLogLevel LogLevel = CATLevelV; //Debug => DLevelV
@@ -38,9 +40,6 @@ static NSString *logFilePath = nil;
 static NSString *logDic      = nil;
 static NSString *crashDic    = nil;
 
-//number of days to delete log file
-static NSInteger numberOfDaysToDelete = 2;
-
 //log queue
 static dispatch_once_t logQueueCreatOnce;
 static dispatch_queue_t logOperationQueue;
@@ -58,11 +57,12 @@ static long tag;
 #pragma mark --
 #pragma mark -- public methods
 
-+(void)initLog{
++(void)initWithNumberOfDaysToDelete:(NSInteger)numberOfDaysToDelete{
+    numberOfDaysToDelete = numberOfDaysToDelete < 0 ? 0 :numberOfDaysToDelete;
     [self setRemoteLogEnable:NO];
     [self setColorEnable:YES];
     [self _initColors];
-    [self _initFile];
+    [self _initFileWithNumberOfDaysToDelete:numberOfDaysToDelete];
     dispatch_once(&logQueueCreatOnce, ^{
         logOperationQueue =  dispatch_queue_create("com.catlog.app.operationqueue", DISPATCH_QUEUE_SERIAL);
     });
@@ -153,10 +153,6 @@ static long tag;
     }
 }
 
-+(void)setNumberOfDaysToDelete:(NSInteger)number{
-    numberOfDaysToDelete = number;
-}
-
 + (void)setLogLevel:(CATLogLevel)level{
     LogLevel = level;
 }
@@ -216,7 +212,7 @@ static long tag;
     colorDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:color4LogV,@(0),color4LogD,@(1),color4LogI,@(2),color4LogW,@(3),color4LogE,@(4),nil];
 }
 
-+(void)_initFile{
++(void)_initFileWithNumberOfDaysToDelete:(NSInteger)numberOfDaysToDelete{
     if (!logFilePath){
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *logDirectory       = [documentsDirectory stringByAppendingString:@"/log/"];
@@ -342,6 +338,26 @@ static long tag;
 
 + (NSString*)_logFormatPrefix:(CATLogLevel)logLevel{
     return [NSString stringWithFormat:@"[%@] ", [self _stringFromLogLevel:logLevel]];
+}
+
++(void)showTodayLogFile{
+    CATLogReviewController* viewCtrl = [[CATLogReviewController alloc]initWithLogFilePath:logFilePath];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewCtrl];
+    UIApplication *application = [UIApplication sharedApplication];
+    UIWindow* keyWindow = application.keyWindow;
+    if (keyWindow.rootViewController) {
+        [keyWindow.rootViewController presentViewController:navigationController animated:YES completion:NULL];
+    }
+}
+
++(void)shwoAllLogFile{
+    CATLogFilesViewController* viewCtrl = [[CATLogFilesViewController alloc]initWithLogDir:logDic];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewCtrl];
+    UIApplication *application = [UIApplication sharedApplication];
+    UIWindow* keyWindow = application.keyWindow;
+    if (keyWindow.rootViewController) {
+        [keyWindow.rootViewController presentViewController:navigationController animated:YES completion:NULL];
+    }
 }
 
 @end

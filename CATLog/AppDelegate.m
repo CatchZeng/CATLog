@@ -25,7 +25,7 @@
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     //Init log
-    [CATLog initLog];
+    [CATLog initWithNumberOfDaysToDelete:3];
     
     //Remote Log
     [CATLog setRemoteLogEnable:YES];
@@ -33,9 +33,6 @@
     
     //Set log level
     [CATLog setLogLevel:CATLevelV];
-    
-    //Set number of days to delete
-    [CATLog setNumberOfDaysToDelete:3];
     
     //Set Color
     [CATLog setR:200 G:0 B:0 forLevel:CATLevelE];

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CATLog.h"
 
 @interface ViewController ()
 
@@ -16,12 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self performSelector:@selector(showFile) withObject:nil afterDelay:2.0f];
+}
+
+-(void)showFile{
+    [CATLog shwoAllLogFile];
+    //    [CATLog showTodayLogFile];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

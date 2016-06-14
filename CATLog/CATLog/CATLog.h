@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
 /**
  *  init log
  */
-+(void)initLog;
++(void)initWithNumberOfDaysToDelete:(NSInteger)number;
 
 /**
  *  set remote log enable
@@ -97,11 +97,14 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
 + (void)setLogLevel:(CATLogLevel)level;
 
 /**
- *  set number of days to delete log file
- *
- *  @param number   : number of days
+ *  show today log file
  */
-+(void)setNumberOfDaysToDelete:(NSInteger)number;
++(void)showTodayLogFile;
+
+/**
+ *  show all log file
+ */
++(void)shwoAllLogFile;
 
 /**
  *  log

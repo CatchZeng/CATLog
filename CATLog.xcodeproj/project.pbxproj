@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1111DC1D10094D00CF842D /* CATLogReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1111DA1D10094D00CF842D /* CATLogReviewController.m */; };
+		3F1111DD1D10094D00CF842D /* CATLogReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1111DB1D10094D00CF842D /* CATLogReviewController.xib */; };
+		3F1111E11D1010A600CF842D /* CATLogFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1111DF1D1010A600CF842D /* CATLogFilesViewController.m */; };
+		3F1111E21D1010A600CF842D /* CATLogFilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1111E01D1010A600CF842D /* CATLogFilesViewController.xib */; };
 		3F8EEFBC1CD2115B0029E3EC /* CATLogTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */; };
 		5D2A6C481CC7DEB300608D28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A6C471CC7DEB300608D28 /* main.m */; };
 		5D2A6C4B1CC7DEB300608D28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A6C4A1CC7DEB300608D28 /* AppDelegate.m */; };
@@ -18,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F1111D91D10094D00CF842D /* CATLogReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATLogReviewController.h; sourceTree = "<group>"; };
+		3F1111DA1D10094D00CF842D /* CATLogReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATLogReviewController.m; sourceTree = "<group>"; };
+		3F1111DB1D10094D00CF842D /* CATLogReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CATLogReviewController.xib; sourceTree = "<group>"; };
+		3F1111DE1D1010A600CF842D /* CATLogFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATLogFilesViewController.h; sourceTree = "<group>"; };
+		3F1111DF1D1010A600CF842D /* CATLogFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATLogFilesViewController.m; sourceTree = "<group>"; };
+		3F1111E01D1010A600CF842D /* CATLogFilesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CATLogFilesViewController.xib; sourceTree = "<group>"; };
 		3F8EEFBA1CD2115A0029E3EC /* CATLogTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATLogTransfer.h; sourceTree = "<group>"; };
 		3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATLogTransfer.m; sourceTree = "<group>"; };
 		5D2A6C431CC7DEB300608D28 /* CATLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CATLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +103,12 @@
 				5D2A6C5F1CC7DED900608D28 /* CATLog.m */,
 				3F8EEFBA1CD2115A0029E3EC /* CATLogTransfer.h */,
 				3F8EEFBB1CD2115B0029E3EC /* CATLogTransfer.m */,
+				3F1111D91D10094D00CF842D /* CATLogReviewController.h */,
+				3F1111DA1D10094D00CF842D /* CATLogReviewController.m */,
+				3F1111DB1D10094D00CF842D /* CATLogReviewController.xib */,
+				3F1111DE1D1010A600CF842D /* CATLogFilesViewController.h */,
+				3F1111DF1D1010A600CF842D /* CATLogFilesViewController.m */,
+				3F1111E01D1010A600CF842D /* CATLogFilesViewController.xib */,
 			);
 			path = CATLog;
 			sourceTree = "<group>";
@@ -156,7 +172,9 @@
 			files = (
 				5D2A6C561CC7DEB300608D28 /* LaunchScreen.storyboard in Resources */,
 				5D2A6C531CC7DEB300608D28 /* Assets.xcassets in Resources */,
+				3F1111E21D1010A600CF842D /* CATLogFilesViewController.xib in Resources */,
 				5D2A6C511CC7DEB300608D28 /* Main.storyboard in Resources */,
+				3F1111DD1D10094D00CF842D /* CATLogReviewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +188,10 @@
 				5D2A6C4E1CC7DEB300608D28 /* ViewController.m in Sources */,
 				3F8EEFBC1CD2115B0029E3EC /* CATLogTransfer.m in Sources */,
 				5D2A6C601CC7DED900608D28 /* CATLog.m in Sources */,
+				3F1111E11D1010A600CF842D /* CATLogFilesViewController.m in Sources */,
 				5D2A6C4B1CC7DEB300608D28 /* AppDelegate.m in Sources */,
 				5D2A6C481CC7DEB300608D28 /* main.m in Sources */,
+				3F1111DC1D10094D00CF842D /* CATLogReviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CATLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.catch.CATLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -297,6 +318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CATLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.catch.CATLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
