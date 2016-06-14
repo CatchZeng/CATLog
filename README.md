@@ -73,7 +73,7 @@ Alternatively you can directly add the `CATLog.h`& `CATLog.m`  source files to y
     //Set ExceptionHandler
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     //Init log
-	[CATLog initLog];
+	[CATLog initWithNumberOfDaysToDelete:3];
 }
 
 void uncaughtExceptionHandler(NSException *exception){
@@ -85,12 +85,6 @@ void uncaughtExceptionHandler(NSException *exception){
 
 ```objective-c
 [CATLog setLogLevel:CATLevelE];
-```
-
-##### Set number of days to delete log file
-
-```objective-c
-[CATLog setNumberOfDaysToDelete:3];
 ```
 
 ##### If you do not like default log color,you can set color for each level.
@@ -106,12 +100,22 @@ void uncaughtExceptionHandler(NSException *exception){
 YouLogI(@"ReDefine Log by yourself");
 ```    
 
+##### Show Log review
+
+```objective-c
+[CATLog shwoAllLogFile];
+``` 
+
+```objective-c
+[CATLog showTodayLogFile];
+``` 
+
+
 ## Change Log
 
 #### V1.0.4
 
 1.Fix numberOfDaysToDelete bug
-
 2.Add log review and email the log files in the App
 
 #### V1.0.2
@@ -121,7 +125,7 @@ YouLogI(@"ReDefine Log by yourself");
 
 #### V1.0.0
 
-1.Add project
+Add project
 
 
 ----
@@ -191,7 +195,7 @@ iOS6或以上
     //Set ExceptionHandler
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     //Init log
-	[CATLog initLog];
+	[CATLog initWithNumberOfDaysToDelete:3];
 }
 
 void uncaughtExceptionHandler(NSException *exception){
@@ -224,12 +228,21 @@ void uncaughtExceptionHandler(NSException *exception){
 YouLogI(@"ReDefine Log by yourself");
 ```    
 
+##### 显示log预览界面
+
+```objective-c
+[CATLog shwoAllLogFile];
+``` 
+
+```objective-c
+[CATLog showTodayLogFile];
+``` 
+
 ## 版本信息
 
 #### V1.0.4
 
 1.修复了设置删除日志文件天数的bug
-
 2.增加日志的预览和邮件发送日志功能
 
 #### V1.0.2
@@ -239,4 +252,4 @@ YouLogI(@"ReDefine Log by yourself");
 
 #### V1.0.0
 
-1.添加基本工程
+添加基本工程
