@@ -6,6 +6,9 @@
 An iOS log system,contains many excellent features,based on [Xcodecolors](https://github.com/robbiehanson/XcodeColors) and [KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole).
 
 ## New Feature
+
+- Add log review and email the log files in the App
+
 - Add mac client to help you debug without the data line.(mac client called CATLogServer.zip is included in the project file)
 
 - Add custom background color for log
@@ -14,6 +17,12 @@ An iOS log system,contains many excellent features,based on [Xcodecolors](https:
 
 ## Effect 
 ![effect](https://github.com/CatchZeng/CATLog/blob/master/CATLog.gif)
+
+![alllog](https://github.com/CatchZeng/CATLog/blob/master/alllog.jpg)
+
+![preview](https://github.com/CatchZeng/CATLog/blob/master/preview.jpg)
+
+![email](https://github.com/CatchZeng/CATLog/blob/master/email.jpg)
 
 ## Requirements
 This library requires a deployment target of iOS 6.0 or greater.
@@ -33,6 +42,7 @@ It takes as little as a single line of code to configure CATLog when your applic
 - Colorizing debugger console output
 - Clickable links in your Xcode console, so you never wonder which class logged the message.
 - Remote log to mac client (debug without the data line)
+- Log review and email the log files
 
 ## Adding CATLog to your project
 
@@ -96,8 +106,25 @@ void uncaughtExceptionHandler(NSException *exception){
 YouLogI(@"ReDefine Log by yourself");
 ```    
 
+## Change Log
+
+#### V1.0.3
+
+1.Fix numberOfDaysToDelete bug
+
+2.Add log review and email the log files in the App
+
+#### V1.0.2
+
+1.Fix pod bug
+2.Add mac client
+
+#### V1.0.0
+
+1.Add project
 
 
+----
 
 # CATLog
 [![Pod Version](https://github.com/CatchZeng/CATLog/blob/master/pod.png)](http://cocoadocs.org/docsets/CATLog/)
@@ -105,11 +132,18 @@ YouLogI(@"ReDefine Log by yourself");
 一个基于[Xcodecolors](https://github.com/robbiehanson/XcodeColors)和[KZLinkedConsole](https://github.com/krzysztofzablocki/KZLinkedConsole),拥有许多优良特性的iOS开源日志工具。
 
 ## 新特性
+- 增加日志的预览和邮件发送日志功能
 - 增加mac客户端,让你可以无需连接数据线调试。（mac客户端在本工程的CATLogServer.zip文件中）
 - 增加自定义log输出背景颜色功能
 
 ## 效果 
 ![effect](https://github.com/CatchZeng/CATLog/blob/master/CATLog.gif)
+
+![alllog](https://github.com/CatchZeng/CATLog/blob/master/alllog.jpg)
+
+![preview](https://github.com/CatchZeng/CATLog/blob/master/preview.jpg)
+
+![email](https://github.com/CatchZeng/CATLog/blob/master/email.jpg)
 
 ## Requirements
 iOS6或以上
@@ -128,6 +162,7 @@ iOS6或以上
 - 支持颜色打印日志
 - 支持点击日志信息跳转到代码中，方便定位错误信息。
 - 远程输出到mac客户端（无需连接数据线调试）
+- 日志的预览和邮件发送日志功能
 
 ## 将CATLog加入工程
 
@@ -188,3 +223,20 @@ void uncaughtExceptionHandler(NSException *exception){
 #define YouLogI(fmt, ...) [CATLog logI:[NSString stringWithFormat:@"[%@:%d] %s %@",[NSString stringWithFormat:@"%s",__FILE__].lastPathComponent,__LINE__,__func__,fmt],##__VA_ARGS__,@""];               
 YouLogI(@"ReDefine Log by yourself");
 ```    
+
+## 版本信息
+
+#### V1.0.3
+
+1.修复了设置删除日志文件天数的bug
+
+2.增加日志的预览和邮件发送日志功能
+
+#### V1.0.2
+
+1.修复pod问题
+2.增加mac客户端
+
+#### V1.0.0
+
+1.添加基本工程
