@@ -116,11 +116,13 @@ YouLogI(@"ReDefine Log by yourself");
 #### V1.0.4
 
 1.Fix numberOfDaysToDelete bug
+
 2.Add log review and email the log files in the App
 
 #### V1.0.2
 
 1.Fix pod bug
+
 2.Add mac client
 
 #### V1.0.0
@@ -243,11 +245,13 @@ YouLogI(@"ReDefine Log by yourself");
 #### V1.0.4
 
 1.修复了设置删除日志文件天数的bug
+
 2.增加日志的预览和邮件发送日志功能
 
 #### V1.0.2
 
 1.修复pod问题
+
 2.增加mac客户端
 
 #### V1.0.0
