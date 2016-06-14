@@ -108,7 +108,7 @@ YouLogI(@"ReDefine Log by yourself");
 
 ## Change Log
 
-#### V1.0.3
+#### V1.0.4
 
 1.Fix numberOfDaysToDelete bug
 
@@ -226,7 +226,7 @@ YouLogI(@"ReDefine Log by yourself");
 
 ## 版本信息
 
-#### V1.0.3
+#### V1.0.4
 
 1.修复了设置删除日志文件天数的bug
 
