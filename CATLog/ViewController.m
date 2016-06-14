@@ -22,7 +22,7 @@
 }
 
 -(void)showFile{
-    [CATLog shwoAllLogFile];
+    [CATLog showAllLogFile];
     //    [CATLog showTodayLogFile];
 }
 

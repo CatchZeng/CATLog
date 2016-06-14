@@ -350,7 +350,7 @@ static long tag;
     }
 }
 
-+(void)shwoAllLogFile{
++(void)showAllLogFile{
     CATLogFilesViewController* viewCtrl = [[CATLogFilesViewController alloc]initWithLogDir:logDic];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewCtrl];
     UIApplication *application = [UIApplication sharedApplication];

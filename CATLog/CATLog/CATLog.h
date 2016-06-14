@@ -104,7 +104,7 @@ typedef NS_ENUM(NSInteger, CATLogLevel) {
 /**
  *  show all log file
  */
-+(void)shwoAllLogFile;
++(void)showAllLogFile;
 
 /**
  *  log
